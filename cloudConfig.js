@@ -11,7 +11,16 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "wanderstay_DEV",
-    allowed_formats: ["jpg", "png", "jpeg"],
+    allowed_formats: [
+      "jpg",
+      "png",
+      "jpeg",
+      "gif",
+      "webp",
+      "avif",
+      "svg",
+      "heic",
+    ],
   },
 });
 
