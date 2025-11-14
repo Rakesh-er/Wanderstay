@@ -1,0 +1,42 @@
+<!-- Floating Toast Messages -->
+<div class="flash-messages-container">
+  <!-- for success -->
+  <% if(success && success.length){ %>
+    <% success.forEach((msg) => { %>
+    <div class="flash-toast flash-toast-success" role="alert">
+      <div class="flash-toast-content">
+        <i class="fa-solid fa-circle-check flash-toast-icon"></i>
+        <span class="flash-toast-message"><%= msg %></span>
+      </div>
+      <button
+        type="button"
+        class="flash-toast-close"
+        aria-label="Close"
+      >
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <div class="flash-toast-progress"></div>
+    </div>
+    <% }); %>
+  <% } %>
+
+  <!-- for errors -->
+  <% if(error && error.length){ %>
+    <% error.forEach((msg) => { %>
+    <div class="flash-toast flash-toast-error" role="alert">
+      <div class="flash-toast-content">
+        <i class="fa-solid fa-circle-exclamation flash-toast-icon"></i>
+        <span class="flash-toast-message"><%= msg %></span>
+      </div>
+      <button
+        type="button"
+        class="flash-toast-close"
+        aria-label="Close"
+      >
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <div class="flash-toast-progress"></div>
+    </div>
+    <% }); %>
+  <% } %>
+</div>

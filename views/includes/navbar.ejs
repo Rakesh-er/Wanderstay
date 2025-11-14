@@ -1,0 +1,183 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-2">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-danger fs-4" href="/listings">
+      <i class="fa-solid fa-person-hiking me-2"></i>
+      wanderstay
+    </a>
+
+    <!-- Toggle -->
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Search Bar (Middle) -->
+    <div
+      class="navbar-nav col-lg-6 col-md-8 mx-auto order-lg-2 order-md-2 order-3"
+      id="search-bar-container"
+    >
+      <form
+        class="d-flex rounded-pill border shadow-sm p-1 w-100"
+        role="search"
+        action="/listings"
+        method="GET"
+      >
+        <input
+          class="form-control me-2 border-0 shadow-none rounded-pill"
+          type="search"
+          placeholder="Search destinations"
+          aria-label="Search"
+          name="q"
+          value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>"
+        />
+        <% if (typeof category !== 'undefined' && category) { %>
+        <input type="hidden" name="category" value="<%= category %>" />
+        <% } %>
+        <button
+          class="btn btn-danger rounded-pill px-3 search-btn"
+          type="submit"
+        >
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Nav Links (Right) -->
+    <div
+      class="collapse navbar-collapse order-lg-3 order-md-3 order-2"
+      id="navbarNav"
+    >
+      <ul class="navbar-nav ms-auto align-items-lg-center align-items-start">
+        <li class="nav-item">
+          <a class="nav-link px-3 fw-semibold" href="/listings">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 fw-semibold" href="/listings/new"
+            >Become a Host</a
+          >
+        </li>
+
+        <% if (!currUser) { %>
+        <li
+          class="nav-item d-flex flex-column flex-lg-row gap-2 gap-lg-0 ms-lg-3 mt-2 mt-lg-0"
+        >
+          <a class="btn btn-outline-danger px-3" href="/login">Login</a>
+          <a class="btn btn-danger px-3 ms-lg-2" href="/signup">Sign Up</a>
+        </li>
+        <% } %> <% if (currUser) { %>
+        <li class="nav-item dropdown ms-lg-3 mt-2 mt-lg-0">
+          <a
+            class="nav-link dropdown-toggle fw-semibold"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-user text-danger"></i> <%= currUser.username
+            %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Navbar Mobile Responsive Styles */
+  @media (max-width: 991.98px) {
+    .navbar {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    .navbar-brand {
+      font-size: 1.25rem !important;
+    }
+    .navbar-brand i {
+      font-size: 1.1rem;
+    }
+    #search-bar-container {
+      order: 3;
+      width: 100%;
+      margin-top: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    #search-bar-container form {
+      padding: 0.5rem;
+    }
+    #search-bar-container input {
+      font-size: 0.9rem;
+    }
+    #search-bar-container .search-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      min-width: 44px;
+      height: auto;
+    }
+    .navbar-nav {
+      padding-top: 0.5rem;
+    }
+    .navbar-nav .nav-link {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.95rem;
+    }
+    .navbar-nav .btn {
+      width: 100%;
+      margin: 0.25rem 0;
+      text-align: center;
+    }
+    .navbar-nav .dropdown-menu {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .navbar-brand {
+      font-size: 1.15rem !important;
+    }
+    .navbar-brand i {
+      font-size: 1rem;
+      margin-right: 0.25rem !important;
+    }
+  }
+  @media (max-width: 575.98px) {
+    .navbar-brand {
+      font-size: 1rem !important;
+    }
+    .navbar-brand i {
+      font-size: 0.9rem;
+      margin-right: 0.25rem !important;
+    }
+    #search-bar-container {
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    #search-bar-container form {
+      padding: 0.4rem;
+    }
+    #search-bar-container input {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.75rem;
+    }
+    #search-bar-container .search-btn {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.85rem;
+      min-width: 40px;
+    }
+    #search-bar-container .search-btn i {
+      font-size: 0.85rem;
+    }
+  }
+</style>

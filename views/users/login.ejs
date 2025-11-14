@@ -1,0 +1,119 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .login-container {
+    width: 380px;
+    max-width: 100%;
+  }
+  @media (max-width: 575.98px) {
+    .login-container {
+      width: 100%;
+      margin: 0 1rem;
+    }
+    .login-container .card {
+      padding: 1.5rem !important;
+    }
+    .login-container h3 {
+      font-size: 1.5rem !important;
+    }
+    .login-container .form-floating {
+      margin-bottom: 1rem !important;
+    }
+    .login-container .btn {
+      padding: 0.75rem !important;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+  <main
+    class="flex-grow-1 d-flex justify-content-center align-items-start pt-5 pb-4 px-3"
+  >
+    <div class="card border-0 shadow-sm p-4 rounded-4 login-container">
+      <div class="text-center mb-3">
+        <h3 class="fw-bold text-danger mb-1">Log In to wanderstay</h3>
+        <p class="text-muted small">Continue your journey with us</p>
+      </div>
+
+      <form
+        action="/login"
+        method="post"
+        novalidate
+        class="needs-validation"
+        autocomplete="off"
+      >
+        <!-- Username -->
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control rounded-3"
+            id="username"
+            name="username"
+            placeholder="username"
+            required
+          />
+          <label for="username">Username</label>
+          <div class="invalid-feedback">Please enter your username.</div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control rounded-3"
+            id="password"
+            name="password"
+            placeholder="password"
+            required
+          />
+          <label for="password">Password</label>
+          <div class="invalid-feedback">Please enter your password.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-primary w-100 py-2 fw-semibold rounded-3 mb-4"
+        >
+          Log In
+        </button>
+
+        <!-- Signup Link -->
+        <div class="text-center">
+          <small class="text-muted">
+            Don't have an account?
+            <a
+              href="/signup"
+              class="fw-semibold text-decoration-none text-danger"
+            >
+              Sign Up
+            </a>
+          </small>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="text-center text-muted small py-3"></footer>
+</body>
+
+<script>
+  (function () {
+    "use strict";
+    var forms = document.querySelectorAll(".needs-validation");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
