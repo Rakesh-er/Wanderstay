@@ -3,7 +3,7 @@
 WanderStay is a full-stack web application for managing travel listings, similar to Airbnb. Users can browse, create, edit, and delete listings for accommodations, leave reviews, and upload images. The app features user authentication, secure image handling, and interactive maps.
 
 **Access the app**:
-   Open your browser and go to `https://wanderstay-wtlp.onrender.com/listings`
+   Open your browser and go to `https://wanderstay-project-l30l.onrender.com/listings`
 
 ## Features
 
